@@ -1,0 +1,36 @@
+body{
+    
+    font-family: 'Cardo', serif;
+}
+
+
+
+.jumbotron{
+    border :2px solid crimson;
+    background-size: 100%;
+    background-image: url("images/Wabash_City_of_St._Louis.jpeg");
+    height: 370px;
+}
+
+.panel {
+  
+	border-color: #eb6b38 !important;
+}
+
+.panel-heading {
+
+    color:black;
+	background-color:#f09673 !important;
+}
+
+th{
+    
+}
+
+
+.submitInput {
+	background-color: #eb6b38 !important;
+}
+
+
+
