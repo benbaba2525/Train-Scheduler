@@ -1,35 +1,44 @@
 body{
-    
-    font-family: 'Cardo', serif;
+    font-family: 'Hind Madurai', sans-serif;
 }
 
 
 
 .jumbotron{
+    
     border :2px solid crimson;
-    background-size: 100%;
+    background-size: cover;
     background-image: url("images/Wabash_City_of_St._Louis.jpeg");
     height: 370px;
 }
 
-.panel {
-  
-	border-color: #eb6b38 !important;
-}
 
-.panel-heading {
 
+.card-header {
+    font-size: 18px;
     color:black;
-	background-color:#f09673 !important;
+    background-color:#f3a485 ;
+    border: 1px solid #f09673;
 }
 
-th{
-    
+.fa{
+    padding: 5px;
+}
+
+#scheduleBroad, #addTrainBroad{
+    border: 1px solid #f09673;
 }
 
 
-.submitInput {
-	background-color: #eb6b38 !important;
+
+
+#submitInput {
+    background-color: #eb6b38 ;
+    color: black;
+}
+
+#submitInput:hover{
+    background-color: rgb(29, 215, 29);
 }
 
 
