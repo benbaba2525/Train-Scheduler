@@ -11,15 +11,14 @@ var firebaseConfig = {
     appId: "1:661411682919:web:d8067cb24fd30c4f4112c2",
     measurementId: "G-Z6XJ0FLSRT"
   };
-  // Initialize Firebase
+// Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
   var database = firebase.database();
 
-
-  // Show current time
-  var datetime = null,
-  date = null;
+// Show current time
+var datetime = null,
+date = null;
 
 var update = function () {
   date = moment(new Date())
@@ -31,7 +30,7 @@ $(document).ready(function(){
   update();
   setInterval(update, 1000);
 });
-
+  
 
 
   // Submit button for adding train scheduler
@@ -41,15 +40,16 @@ $(document).ready(function(){
  // Grabs user input
  var trainName = $("#trainName-input").val().trim();
  var trainDestination = $("#destination-input").val().trim();
- var trainTime = $("#trainTime-input").val().trim();
+ var firstTime = $("#firstTrainTime-input").val().trim();
  var trainFrequency = $("#frequency-input").val().trim();
 
   // Creates local "temporary" object for holding train scheduler data
 var newTrain = {
     name: trainName,
     destination: trainDestination,
-    time: trainTime,
-    frequency: trainFrequency
+    time: firstTime,
+    frequency: trainFrequency,
+   
 };
 
  // Uploads train scheduler data to the database
@@ -60,12 +60,14 @@ console.log(newTrain.name);
 console.log(newTrain.destination);
 console.log(newTrain.time);
 console.log(newTrain.frequency);
-alert("Train schduler successfully added");
+
+
+
 
 // Clears all of the text-boxes
 $("#trainName-input").val("");
 $("#destination-input").val("");
-$("#trainTime-input").val("");
+$("#firstTrainTime-input").val("");
 $("#frequency-input").val("");
 
 });
@@ -77,15 +79,64 @@ database.ref().on("child_added", function(childSnapshot){
   // Store everything into a variable.
   var trainName = childSnapshot.val().name;
   var trainDestination = childSnapshot.val().destination;
-  var trainTime = childSnapshot.val().time;
+  var firstTime = childSnapshot.val().time;
   var trainFrequency = childSnapshot.val().frequency;
 
   // Train Scheduler Info
   console.log(trainName);
   console.log(trainDestination);
-  console.log(trainTime);
+  console.log(firstTime);
   console.log(trainFrequency);
 
+  // First Time (pushed back 1 year to make sure it comes before current time)
+  var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+  console.log(firstTimeConverted);
+
+  // Current Time
+  var currentTime = moment();
+  console.log("Current time " + moment().format('MMMM Do YYYY, h:mm:ss a'));
+
+// Difference between the times
+var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+console.log("DIFFERENCE IN TIME: " + diffTime);
+
+// Time apart (remainder)
+var tRemainder = diffTime % trainFrequency;
+console.log(tRemainder);
+
+// Minute Until Train
+var minutesAway = trainFrequency - tRemainder;
+console.log("MINUTES TILL TRAIN: " + minutesAway);
+
+// Next Train
+var nextTrain = moment().add(minutesAway, "minutes");
+console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+// Arrival time
+var nextArrival = moment(nextTrain).format("hh:mm a");
 
 
+// Append the new row to the table
+$("#trainTable > tbody").append(
+  "<tr><td>"  + trainName + 
+  "</td><td>" +trainDestination +
+  "</td><td>" +trainFrequency +
+  "</td><td>" + nextArrival +
+  "</td><td>" + minutesAway +
+  "</td><td>" + "<i class='fa fa-pencil-square-o' aria-hidden='true'></i>" +
+  "</td><td>" + "<i class='fa fa-trash' aria-hidden='true'></i>" +
+  "</td></tr>");
+
+// If any errors are experienced, log them to console.
+}, function(errorObject) {
+  console.log("Errors handled: " + errorObject.code);
 });
+
+
+
+
+
+
+
+
+
+

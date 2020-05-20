@@ -2,8 +2,6 @@ body{
     font-family: 'Hind Madurai', sans-serif;
 }
 
-
-
 .jumbotron{
     
     border :2px solid crimson;
@@ -32,6 +30,7 @@ h5{
     background-color: rgba(153, 231, 231, 0.728);
     width:420px;
     font-size: 22px;
+    padding:5px;
     margin: auto;
     text-align: center;
 
