@@ -12,13 +12,38 @@ body{
     height: 370px;
 }
 
+.display-4{
+    color: rgb(237, 245, 247);
+    background-color: rgba(47, 79, 79, 0.57);
+    font-size: 80px;
+    text-align: center;
+}
+
+.lead{
+    color: rgb(237, 245, 247);
+    background-color: rgba(47, 79, 79, 0.57);
+    font-size: 40px;
+    text-align: center;
+
+}
+
+h5{
+    color:  #f11a0b;
+    background-color: rgba(153, 231, 231, 0.728);
+    width:420px;
+    font-size: 22px;
+    margin: auto;
+    text-align: center;
+
+}
+
 
 
 .card-header {
     font-size: 18px;
     color:black;
     background-color:#f3a485 ;
-    border: 1px solid #f09673;
+    border: 1px solid #f11a0b;
 }
 
 .fa{
@@ -26,9 +51,12 @@ body{
 }
 
 #scheduleBroad, #addTrainBroad{
-    border: 1px solid #f09673;
+    border: 1px solid #f11a0b;
 }
 
+thead{
+    background-color: rgb(240, 180, 159);
+}
 
 
 
