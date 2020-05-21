@@ -15,6 +15,7 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
   var database = firebase.database();
+  
 
 // Show current time
 var datetime = null,
@@ -30,8 +31,36 @@ $(document).ready(function(){
   update();
   setInterval(update, 1000);
 });
-  
 
+var provider = new firebase.auth.GoogleAuthProvider();
+
+function googleSignin() {
+   firebase.auth()
+   
+   .signInWithPopup(provider).then(function(result) {
+      var token = result.credential.accessToken;
+      var user = result.user;
+		
+      console.log(token)
+      console.log(user)
+   }).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+		
+      console.log(error.code)
+      console.log(error.message)
+   });
+}
+
+function googleSignout() {
+   firebase.auth().signOut()
+	
+   .then(function() {
+      console.log('Signout Succesfull')
+   }, function(error) {
+      console.log('Signout Failed')  
+   });
+}
 
   // Submit button for adding train scheduler
   $("#submitInput").on("click", function(event){
@@ -92,9 +121,9 @@ database.ref().on("child_added", function(childSnapshot){
   var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
   console.log(firstTimeConverted);
 
-  // Current Time
-  var currentTime = moment();
-  console.log("Current time " + moment().format('MMMM Do YYYY, h:mm:ss a'));
+// Current Time
+var currentTime = moment();
+console.log("Current time " + moment().format('MMMM Do YYYY, h:mm:ss a'));
 
 // Difference between the times
 var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
@@ -131,12 +160,9 @@ $("#trainTable > tbody").append(
   console.log("Errors handled: " + errorObject.code);
 });
 
-
-
-
-
-
-
-
+$("body").on("click", ".fa-trash", function() {
+  $(this).parents("tr").remove(); 
+  alert("Delete button clicked");
+});
 
 
