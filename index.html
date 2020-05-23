@@ -44,85 +44,16 @@
       </div>
     </div>
 
-    <div class="container-fluid">
-        <div class="row pageRow">
+    <!-- The surrounding HTML is left untouched by FirebaseUI.
+     Your app may use that space for branding, controls and other customizations.-->
+<h1>Sign In</h1>
+<div id="firebaseui-auth-container" ></div>
 
-    <!-- Train Scheduler -->
-            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9" >
-               <div class="card-header"><strong><i class="fa fa-list-alt"></i> Train Schedule</strong></div>
 
-                <div class="table-responsive" id="scheduleBroad">
-                  <div class="card-body">
-
-               <table class="table table-hover" id = "trainTable">
-                <thead class="table-danger">
-                  <tr>
-                    <th scope="col"><strong>Train Name</strong></th>
-                    <th scope="col"><strong>Destination</strong></th>
-                    <th scope="col"><strong>Frequency (min)</strong></th>
-                    <th scope="col"><strong></strong>Next Arrival</th>
-                    <th scope="col"><strong></strong>Minutes Away</th>
-                    <th scope="col"><strong></strong>Delete</th>
-                  </tr>
-                </thead>
-  <!-- New row on Trian Schdule Table-->
-                 <tbody>
-                </tbody>
-              </table>
-
-              
-            </div>
-          </div>  
-        </div>
-
-   <!-- Add Train -->
-        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" >
-            <div class="card-header"><strong><i class="fa fa-train" aria-hidden="true"></i> Add Train</strong></div>
-              <div class="table-responsive" id="addTrainBroad">
-                <div class="card-body">
-                <form>
-
-                    <div class="form-group">
-                      <label for="trainName">Train Name</label>
-                      <input type="text" class="form-control" id="trainName-input" placeholder="Enter a train name">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="destination">Destination</label>
-                      <input type="text" class="form-control" id="destination-input" placeholder="City, State">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="firstTime">First Train Time (HH:MM, AM/PM)</label>
-                        <input type="time" class="form-control" id="firstTrainTime-input">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="frequency">Frequency (min)</label>
-                        <input type="text" class="form-control" id="frequency-input" placeholder="Enter minutes (e.g. 30 )">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" id= "submitInput">Submit</button>
-                  </form>
-                </div>
-           
-
-              
-            </div>
-        </div>   
+<br><br><br>
 
 
     
-
-<!---->
-
-        </div>
-    </div>
-
-
-
-    
-
       <!-- Added link to the jQuery Library -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <!--Added link to Javascript -->
