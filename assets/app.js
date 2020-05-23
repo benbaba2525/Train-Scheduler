@@ -14,7 +14,7 @@ var firebaseConfig = {
 // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-  $("#scheduleBroad").remove();
+  $("#scheduleBroad").hide();
   // Initialize the FirebaseUI Widget using Firebase.
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
   ui.start('#firebaseui-auth-container', {
@@ -22,7 +22,6 @@ var firebaseConfig = {
       // List of OAuth providers supported.
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    firebase.auth.TwitterAuthProvider.PROVIDER_ID,
     firebase.auth.GithubAuthProvider.PROVIDER_ID
     ],
     // Other config options...
@@ -44,12 +43,11 @@ var firebaseConfig = {
     },
     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
     signInFlow: 'popup',
-    signInSuccessUrl: '<https://benbaba2525.github.io/Train-Scheduler/>',
+    signInSuccessUrl: '<train-scheduler-a0a02.firebaseapp.com>',
     signInOptions: [
       // Leave the lines as is for the providers you want to offer your users.
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    firebase.auth.TwitterAuthProvider.PROVIDER_ID,
     firebase.auth.GithubAuthProvider.PROVIDER_ID
       
     ],
@@ -81,7 +79,15 @@ $(document).ready(function(){
   setInterval(update, 1000);
 });
 
+$(".loginBtn").on("click",function(){
+  $("#scheduleBroad").show();
 
+  alert("hellow");
+});
+
+
+
+function logIn(){
 
   // Submit button for adding train scheduler
   $("#submitInput").on("click", function(event){
@@ -186,4 +192,4 @@ $("body").on("click", ".fa-trash", function() {
   alert("Delete button clicked");
 });
 
-
+};
