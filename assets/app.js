@@ -15,15 +15,14 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
   
-  // Initialize the FirebaseUI Widget using Firebase.
+// Initialize the FirebaseUI Widget using Firebase.
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
-  ui.start('#firebaseui-auth-container', {
-    signInOptions: [
+    ui.start('#firebaseui-auth-container', {
+     signInOptions: [
       // List of OAuth providers supported.
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.GithubAuthProvider.PROVIDER_ID
     ],
-    // Other config options...
   });
 
   var uiConfig = {
@@ -59,9 +58,8 @@ var firebaseConfig = {
 ui.start('#firebaseui-auth-container', uiConfig);
 
 // -----------------------------------
-  var database = firebase.database();
+var database = firebase.database();
   
-
 // Show current time
 var datetime = null,
 date = null;
@@ -76,8 +74,6 @@ $(document).ready(function(){
   update();
   setInterval(update, 1000);
 });
-
-
 
 
   // Submit button for adding train scheduler
@@ -102,15 +98,6 @@ var newTrain = {
  // Uploads train scheduler data to the database
  database.ref().push(newTrain);
 
-// Logs everything to console
-console.log(newTrain.name);
-console.log(newTrain.destination);
-console.log(newTrain.time);
-console.log(newTrain.frequency);
-
-
-
-
 // Clears all of the text-boxes
 $("#trainName-input").val("");
 $("#destination-input").val("");
@@ -121,23 +108,14 @@ $("#frequency-input").val("");
 
 //Create Firebase event for adding train scheduler to the database and a row in the html when a user adds an entry
 database.ref().on("child_added", function(childSnapshot){
-  console.log(childSnapshot.val());
-
-  // Store everything into a variable.
+// Store everything into a variable.
   var trainName = childSnapshot.val().name;
   var trainDestination = childSnapshot.val().destination;
   var firstTime = childSnapshot.val().time;
   var trainFrequency = childSnapshot.val().frequency;
 
-  // Train Scheduler Info
-  console.log(trainName);
-  console.log(trainDestination);
-  console.log(firstTime);
-  console.log(trainFrequency);
-
-  // First Time (pushed back 1 year to make sure it comes before current time)
+// First Time (pushed back 1 year to make sure it comes before current time)
   var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
-  console.log(firstTimeConverted);
 
 // Current Time
 var currentTime = moment();
@@ -145,22 +123,18 @@ console.log("Current time " + moment().format('MMMM Do YYYY, h:mm:ss a'));
 
 // Difference between the times
 var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-console.log("DIFFERENCE IN TIME: " + diffTime);
 
 // Time apart (remainder)
 var tRemainder = diffTime % trainFrequency;
-console.log(tRemainder);
 
 // Minute Until Train
 var minutesAway = trainFrequency - tRemainder;
-console.log("MINUTES TILL TRAIN: " + minutesAway);
 
 // Next Train
 var nextTrain = moment().add(minutesAway, "minutes");
-console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+
 // Arrival time
 var nextArrival = moment(nextTrain).format("hh:mm a");
-
 
 // Append the new row to the table
 $("#trainTable > tbody").append(
@@ -177,6 +151,7 @@ $("#trainTable > tbody").append(
   console.log("Errors handled: " + errorObject.code);
 });
 
+// Click to delete the schedule
 $("body").on("click", ".fa-trash", function() {
   $(this).parents("tr").remove(); 
   alert("Delete button clicked");

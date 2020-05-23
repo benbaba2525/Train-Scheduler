@@ -20,13 +20,6 @@ body{
 h1{
     text-align: center;
 }
-.lead{
-    color: rgb(237, 245, 247);
-    background-color: rgba(47, 79, 79, 0.57);
-    font-size: 40px;
-    text-align: center;
-
-}
 
 h5{
     color:  #f11a0b;
@@ -39,13 +32,22 @@ h5{
 
 }
 
-
+.lead{
+    color: rgb(237, 245, 247);
+    background-color: rgba(47, 79, 79, 0.57);
+    font-size: 40px;
+    text-align: center;
+}
 
 .card-header {
     font-size: 18px;
     color:black;
     background-color:#f3a485 ;
     border: 1px solid #f11a0b;
+}
+
+thead{
+    background-color: rgb(240, 180, 159);
 }
 
 .fa{
@@ -55,11 +57,6 @@ h5{
 #scheduleBroad, #addTrainBroad{
     border: 1px solid #f11a0b;
 }
-
-thead{
-    background-color: rgb(240, 180, 159);
-}
-
 
 
 #submitInput {

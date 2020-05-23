@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Google-->
     <meta name="google-signin-client_id" content="167602757568-k6027cugtilquc0nh7oal29icsbs44ov.apps.googleusercontent.com">
-  <meta name="google-signin-cookiepolicy" content="single_host_origin">
-  <meta name="google-signin-scope" content="profile email">
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-    
-    
-    
-    
-    
+    <meta name="google-signin-cookiepolicy" content="single_host_origin">
+    <meta name="google-signin-scope" content="profile email">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>  
     <!--Added link to Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!--Added link to to Google Fonts-->
@@ -26,9 +22,9 @@
    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js"></script>
    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" /> 
+   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" /> 
    <!-- Moment.js Reference -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 
 
     <title>Train Scheduler</title>
@@ -50,27 +46,22 @@
     <!-- Train Scheduler -->
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9" >
                <div class="card-header"><strong><i class="fa fa-list-alt"></i> Train Schedule</strong></div>
-
-                <div class="table-responsive" id="scheduleBroad">
-                  <div class="card-body">
-
-               <table class="table table-hover" id = "trainTable">
-                <thead class="table-danger">
-                  <tr>
-                    <th scope="col"><strong>Train Name</strong></th>
-                    <th scope="col"><strong>Destination</strong></th>
-                    <th scope="col"><strong>Frequency (min)</strong></th>
-                    <th scope="col"><strong></strong>Next Arrival</th>
-                    <th scope="col"><strong></strong>Minutes Away</th>
-                    <th scope="col"><strong></strong>Delete</th>
-                  </tr>
-                </thead>
+                 <div class="table-responsive" id="scheduleBroad">
+                   <div class="card-body">
+                    <table class="table table-hover" id = "trainTable">
+                      <thead class="table-danger">
+                        <tr>
+                           <th scope="col"><strong>Train Name</strong></th>
+                           <th scope="col"><strong>Destination</strong></th>
+                           <th scope="col"><strong>Frequency (min)</strong></th>
+                           <th scope="col"><strong></strong>Next Arrival</th>
+                           <th scope="col"><strong></strong>Minutes Away</th>
+                           <th scope="col"><strong></strong>Delete</th>
+                       </tr>
+                     </thead>
   <!-- New row on Trian Schdule Table-->
-                 <tbody>
-                </tbody>
-              </table>
-
-              
+                      <tbody></tbody>
+                 </table>
             </div>
           </div>  
         </div>
@@ -80,48 +71,36 @@
             <div class="card-header"><strong><i class="fa fa-train" aria-hidden="true"></i> Add Train</strong></div>
               <div class="table-responsive" id="addTrainBroad">
                 <div class="card-body">
-                <form>
-
+                  <form>
                     <div class="form-group">
                       <label for="trainName">Train Name</label>
                       <input type="text" class="form-control" id="trainName-input" placeholder="Enter a train name">
-                    </div>
+                     </div>
 
-                    <div class="form-group">
+                     <div class="form-group">
                       <label for="destination">Destination</label>
                       <input type="text" class="form-control" id="destination-input" placeholder="City, State">
-                    </div>
+                     </div>
 
-                    <div class="form-group">
+                      <div class="form-group">
                         <label for="firstTime">First Train Time (HH:MM, AM/PM)</label>
                         <input type="time" class="form-control" id="firstTrainTime-input">
-                    </div>
+                      </div>
 
-                    <div class="form-group">
+                      <div class="form-group">
                         <label for="frequency">Frequency (min)</label>
                         <input type="text" class="form-control" id="frequency-input" placeholder="Enter minutes (e.g. 30 )">
-                    </div>
-
+                      </div>
                     <button type="submit" class="btn btn-primary" id= "submitInput">Submit</button>
                   </form>
                 </div>
-           
-
-              
             </div>
         </div>   
 
-
-    
-
 <!---->
+      </div>
+</div>
 
-        </div>
-    </div>
-
-
-
-    
 
       <!-- Added link to the jQuery Library -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
