@@ -14,15 +14,14 @@ var firebaseConfig = {
 // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-  $("#scheduleBroad").hide();
+  
   // Initialize the FirebaseUI Widget using Firebase.
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
   ui.start('#firebaseui-auth-container', {
     signInOptions: [
       // List of OAuth providers supported.
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    firebase.auth.GithubAuthProvider.PROVIDER_ID
+      firebase.auth.GithubAuthProvider.PROVIDER_ID
     ],
     // Other config options...
   });
@@ -47,8 +46,7 @@ var firebaseConfig = {
     signInOptions: [
       // Leave the lines as is for the providers you want to offer your users.
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    firebase.auth.GithubAuthProvider.PROVIDER_ID
+      firebase.auth.GithubAuthProvider.PROVIDER_ID
       
     ],
     // Terms of service url.
@@ -79,15 +77,8 @@ $(document).ready(function(){
   setInterval(update, 1000);
 });
 
-$(".loginBtn").on("click",function(){
-  $("#scheduleBroad").show();
-
-  alert("hellow");
-});
 
 
-
-function logIn(){
 
   // Submit button for adding train scheduler
   $("#submitInput").on("click", function(event){
@@ -178,7 +169,6 @@ $("#trainTable > tbody").append(
   "</td><td>" +trainFrequency +
   "</td><td>" + nextArrival +
   "</td><td>" + minutesAway +
-  "</td><td>" + "<i class='fa fa-pencil-square-o' aria-hidden='true'></i>" +
   "</td><td>" + "<i class='fa fa-trash' aria-hidden='true'></i>" +
   "</td></tr>");
 
@@ -192,4 +182,3 @@ $("body").on("click", ".fa-trash", function() {
   alert("Delete button clicked");
 });
 
-};
